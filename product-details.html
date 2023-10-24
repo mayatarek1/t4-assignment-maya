@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product <Details></Details></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css">
+   
+   <script>
+        function incrementQuantity(button) {
+            const quantityElement = button.parentNode.querySelector("span");
+            let quantity = parseInt(quantityElement.textContent);
+            quantity++;
+            quantityElement.textContent = quantity;
+        }
+    
+        function decrementQuantity(button) {
+            const quantityElement = button.parentNode.querySelector("span");
+            let quantity = parseInt(quantityElement.textContent);
+            if (quantity > 1) {
+                quantity--;
+                quantityElement.textContent = quantity;
+            }
+        }
+    </script>
+      <!-- JavaScript -->
+      <script>
+        const productLinks = document.querySelectorAll('.group');
+        productLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const targetModalId = link.getAttribute('data-target');
+                const targetModal = document.getElementById(targetModalId);
+                targetModal.classList.remove('hidden');
+            });
+        });
+
+        const closeButtons = document.querySelectorAll('.close-modal');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetModalId = button.getAttribute('data-target');
+                const targetModal = document.getElementById(targetModalId);
+                targetModal.classList.add('hidden');
+            });
+        });
+    </script>
+</head>
+              
+<body>
+    <!--navbar-->
+    <div class="bg-white">
+        <header class="absolute inset-x-0 top-0 z-50">
+          <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <div class="flex lg:flex-1">
+              <a href="#" class="-m-1.5 p-1.5">
+                <span class="sr-only">Maya Tarek</span>
+                <img class="h-8 w-auto" src="./images/ Logo.png">
+              </a>
+            </div>
+            <div class="flex lg:hidden">
+              <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                <span class="sr-only">Open main menu</span>
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </button>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+              <a href="./index.html" class="text-sm font-semibold leading-6 text-gray-900">Home</a>
+              <a href="./about.html" class="text-sm font-semibold leading-6 text-gray-900">About</a>
+              <a href="./products.html" class="text-sm font-semibold leading-6 text-gray-900">Products</a>
+              <a href="./reach-us.html" class="text-sm font-semibold leading-6 text-gray-900">Reach Us</a>
+            </div>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+              <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </nav>
+          <!-- Mobile menu, show/hide based on menu open state. -->
+          <div class="lg:hidden" role="dialog" aria-modal="true">
+            <!-- Background backdrop, show/hide based on slide-over state. -->
+            <div class="fixed inset-0 z-50"></div>
+            <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+              <div class="flex items-center justify-between">
+                <a href="#" class="-m-1.5 p-1.5">
+                  <span class="sr-only">Maya Tarek</span>
+                  <img class="h-8 w-auto" src="./images/ Logo.png" alt="">
+                </a>
+                <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                  <span class="sr-only">Close menu</span>
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-6 flow-root">
+                <div class="-my-6 divide-y divide-gray-500/10">
+                  <div class="space-y-2 py-6">
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Home</a>
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">About</a>
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Products</a>
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Reach Us</a>
+                  </div>
+                  <div class="py-6">
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+    </div>
+       <!--products-->
+       <body>
+        <div class="bg-white">
+            <div class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+              <div>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Product Details</h2>
+               
+              </div>
+            </div>
+        </div>
+        
+        <div class="modal-group">
+              <!--  1 -->
+            <div id="product-modal-1" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+                <div class="modal-content">
+                    <h2>Heart Frame</h2>
+                    <p>Description: Some details about the product.</p>
+                    <p>Price: 200EGP</p>
+                    <img src="./images/product1.JPG" alt="Product Image"width=100>
+                    <button class="close-modal" data-target="product-modal-1">Close</button>
+                </div>
+            </div>
+            <!--  2 -->
+            <div id="product-modal-2" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+                <div class="modal-content">
+                    <h2>Open When Letters</h2>
+                    <p>Description: Some details about the product.</p>
+                    <p>Price: 200EGP</p>
+                    <img src="./images/product2.JPG" alt="Product Image">
+                    <button class="close-modal" data-target="product-modal-2">Close</button>
+                </div>
+            </div>
+              <!--  3 -->
+              <div id="product-modal-3" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+                <div class="modal-content">
+                    <h2>Music Plaque</h2>
+                    <p>Description: Some details about the product.</p>
+                    <p>Price: 200EGP</p>
+                    <img src="./images/product3.JPG" alt="Product Image">
+                    <button class="close-modal" data-target="product-modal-3">Close</button>
+                </div>
+            </div>
+            <!--4-->
+            <div id="product-modal-4" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+                <div class="modal-content">
+                    <h2>Bulb Messages</h2>
+                    <p>Description: Some details about the product.</p>
+                    <p>Price: 200EGP</p>
+                    <img src="./images/product4.JPG" alt="Product Image">
+                    <button class="close-modal" data-target="product-modal-4">Close</button>
+                </div>
+            </div>
+            <!--5-->
+            <div id="product-modal-5" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+                <div class="modal-content">
+                    <h2>Picture Boxes</h2>
+                    <p>Description: Some details about the product.</p>
+                    <p>Price: 200EGP</p>
+                    <img src="./images/product5.jpg" alt="Product Image">
+                    <button class="close-modal" data-target="product-modal-5">Close</button>
+                </div>
+            </div>
+             <!--6-->
+             <div id="product-modal-6" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+                <div class="modal-content">
+                    <h2>Music Keychain</h2>
+                    <p>Description: Some details about the product.</p>
+                    <p>Price: 200EGP</p>
+                    <img src="./images/product6.JPG" alt="Product Image">
+                    <button class="close-modal" data-target="product-modal-6">Close</button>
+                </div>
+            </div>
+             <!--7-->
+             <div id="product-modal-7" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+                <div class="modal-content">
+                    <h2>Music Covers</h2>
+                    <p>Description: Some details about the product.</p>
+                    <p>Price: 200EGP</p>
+                    <img src="./images/product7.JPG" alt="Product Image">
+                    <button class="close-modal" data-target="product-modal-7">Close</button>
+                </div>
+            </div>
+             <!--8-->
+             <div id="product-modal-8" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+                <div class="modal-content">
+                    <h2>Picture Boxes</h2>
+                    <p>Description: Some details about the product.</p>
+                    <p>Price: 200EGP</p>
+                    <img src="./images/product18.JPG" alt="Product Image">
+                    <button class="close-modal" data-target="product-modal-8">Close</button>
+                </div>
+            </div>
+            <!-- Links -->
+            <a class="group" data-target="product-modal-1"></a>
+            <a class="group" data-target="product-modal-2"></a>
+            <a class="group" data-target="product-modal-3"></a>
+            <a class="group" data-target="product-modal-4"></a>
+            <a class="group" data-target="product-modal-5"></a>
+            <a class="group" data-target="product-modal-6"></a>
+            <a class="group" data-target="product-modal-7"></a>
+            <a class="group" data-target="product-modal-8"></a>
+
+        </div>
+    
+      
+    </body>
